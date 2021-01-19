@@ -1,5 +1,11 @@
-const { send } = require("./fsm-promise-object/interpreter");
+const { sendObj, sendSwitch } = require("./fsm-promise/interpreter");
 
-send("FETCH");
-send("FETCH"); // anomalous state
-send("RESOLVE");
+sendObj("FETCH");
+sendObj("FETCH"); // anomalous state
+sendObj("RESOLVE");
+
+console.log(" -------------------------- ");
+
+sendSwitch("FETCH");
+sendSwitch("FETCH"); // anomalous state
+sendSwitch("RESOLVE");
