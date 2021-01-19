@@ -1,5 +1,5 @@
-const { transition } = require("./fsm-promise-object");
+const { send } = require("./fsm-promise-object/interpreter");
 
-console.log(transition("idle", "FETCH"));
-console.log(transition("pending", "FETCH")); // anomalous state
-console.log(transition("pending", "RESOLVE"));
+send("FETCH");
+send("FETCH"); // anomalous state
+send("RESOLVE");

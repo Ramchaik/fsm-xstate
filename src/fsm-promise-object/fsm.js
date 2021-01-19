@@ -1,3 +1,6 @@
+/**
+ * Pure
+ */
 const machine = {
   initial: "idle",
   states: {
@@ -21,5 +24,6 @@ const transition = (state, event) =>
   machine.states[state]?.on?.[event] || state;
 
 module.exports = {
+  machine,
   transition,
 };
