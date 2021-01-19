@@ -4,22 +4,27 @@ const { transition: transitionSwitch } = require("./fsm-switch/fsm");
  * Impure
  */
 
-let currentStateObj = machine.initial; // idle
-let currentStateSwitch = "idle";
-
-const sendObj = (event) => {
-  const nextState = transitionObj(currentStateObj, event);
-  console.log(nextState);
-  currentStateObj = nextState;
+const interpretObjMachine = (machine) => {
+  let currentState = machine.initial; // idle
+  const send = (event) => {
+    const nextState = transitionObj(currentState, event);
+    console.log(nextState);
+    currentState = nextState;
+  };
+  return { send };
 };
 
-const sendSwitch = (event) => {
-  const nextState = transitionSwitch(currentStateSwitch, event);
-  console.log(nextState);
-  currentStateSwitch = nextState;
+const interpretSwitchMachine = () => {
+  let currentState = "idle";
+  const send = (event) => {
+    const nextState = transitionSwitch(currentState, event);
+    console.log(nextState);
+    currentState = nextState;
+  };
+  return { send };
 };
 
 module.exports = {
-  sendObj,
-  sendSwitch,
+  sendObj: interpretObjMachine(machine).send,
+  sendSwitch: interpretSwitchMachine().send,
 };
