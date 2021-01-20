@@ -21,14 +21,9 @@ send("CLOSE");
 console.log(" -------------------------- ");
 */
 
-console.log(feedbackMachine.initialState);
-const clickGoodEvent = {
-  type: "CLICK_GOOD",
-};
-
 const nextState = feedbackMachine.transition(
   feedbackMachine.initialState,
-  clickGoodEvent
+  "CLICK_GOOD"
 );
 
 console.log("**********");
