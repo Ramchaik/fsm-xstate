@@ -1,7 +1,7 @@
 /**
  * Pure
  */
-const transition = (state, event) => {
+export const transition = (state: string, event: string): string => {
   switch (state) {
     case "idle":
       switch (event) {
@@ -26,8 +26,4 @@ const transition = (state, event) => {
     default:
       return state;
   }
-};
-
-module.exports = {
-  transition,
 };

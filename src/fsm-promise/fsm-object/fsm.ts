@@ -1,7 +1,10 @@
 /**
  * Pure
  */
-const machine = {
+
+import { Machine } from "src/types";
+
+export const machine: Machine = {
   initial: "idle",
   states: {
     idle: {
@@ -20,10 +23,5 @@ const machine = {
   },
 };
 
-const transition = (state, event) =>
+export const transition = (state: string, event: string): string =>
   machine.states[state]?.on?.[event] || state;
-
-module.exports = {
-  machine,
-  transition,
-};

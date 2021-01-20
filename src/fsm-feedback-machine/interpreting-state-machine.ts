@@ -1,12 +1,19 @@
-const { feedbackMachine, transition } = require("./fsm");
+import { Machine } from "src/types";
+import { feedbackMachine, transition } from "./fsm";
 
-function interpret(machine) {
+function interpret(
+  machine: Machine
+): {
+  onTransition: (l: any) => void;
+  send: (e: string) => void;
+  stop: () => void;
+} {
   let currentState = machine.initial;
   let status = 1; // 1 means started, 2 means stoped
 
   const listeners = new Set();
 
-  const send = (event) => {
+  const send = (event: string) => {
     // Don't accept events if stopped
     if (status === 2) {
       console.log("machine stoped");
@@ -18,7 +25,7 @@ function interpret(machine) {
     currentState = nextState;
   };
 
-  const onTransition = (listener) => {
+  const onTransition = (listener: any) => {
     listeners.add(listener);
   };
 
@@ -35,6 +42,4 @@ function interpret(machine) {
   };
 }
 
-module.exports = {
-  send: interpret(feedbackMachine).send,
-};
+export const send = interpret(feedbackMachine).send;

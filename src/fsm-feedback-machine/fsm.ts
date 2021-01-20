@@ -1,4 +1,6 @@
-const feedbackMachine = {
+import { Machine } from "src/types";
+
+export const feedbackMachine: Machine = {
   initial: "question",
   states: {
     question: {
@@ -21,10 +23,5 @@ const feedbackMachine = {
   },
 };
 
-const transition = (state, event) =>
+export const transition = (state: string, event: string): string =>
   feedbackMachine.states[state]?.on?.[event] || state;
-
-module.exports = {
-  feedbackMachine,
-  transition,
-};

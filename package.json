@@ -1,0 +1,30 @@
+{
+  "name": "fsm-xstate",
+  "version": "1.0.0",
+  "description": "Finite State Machines",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "dev": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ramchaik/fsm-xstate.git"
+  },
+  "keywords": [],
+  "author": "Vaibhav Singh <0vaibhavsingh0@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ramchaik/fsm-xstate/issues"
+  },
+  "homepage": "https://github.com/Ramchaik/fsm-xstate#readme",
+  "dependencies": {
+    "xstate": "^4.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "typescript": "^4.1.3"
+  }
+}

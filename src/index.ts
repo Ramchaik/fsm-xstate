@@ -1,7 +1,7 @@
-// const { sendObj, sendSwitch } = require("./fsm-promise/interpreter");
-const { send } = require("./fsm-feedback-machine/interpreting-state-machine");
+import { sendObj, sendSwitch } from "./fsm-promise/interpreter";
+import { send } from "./fsm-feedback-machine/interpreting-state-machine";
+import { feedbackMachine } from "./fsm-xstate-feedback-machine/fsm";
 
-/*
 sendObj("FETCH");
 sendObj("FETCH"); // anomalous state
 sendObj("RESOLVE");
@@ -13,8 +13,8 @@ sendSwitch("FETCH"); // anomalous state
 sendSwitch("RESOLVE");
 
 console.log(" -------------------------- ");
-*/
 
 send("CLICK_BAD");
 send("SUBMIT");
 send("CLOSE");
+console.log(" -------------------------- ");
