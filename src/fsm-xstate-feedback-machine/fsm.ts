@@ -1,6 +1,6 @@
-import { createMachine } from "xstate";
+import { createMachine, interpret } from "xstate";
 
-export const feedbackMachine = createMachine({
+const feedbackMachine = createMachine({
   initial: "question",
   states: {
     question: {
@@ -11,7 +11,19 @@ export const feedbackMachine = createMachine({
       },
     },
     form: {},
-    thanks: {},
+    thanks: {
+      on: {
+        CLOSE: {
+          target: "closed",
+        },
+      },
+    },
     closed: {},
   },
 });
+
+export const feedbackService = interpret(feedbackMachine)
+  .onTransition((state) => {
+    console.log(state.value);
+  })
+  .start();
